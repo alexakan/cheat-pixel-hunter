@@ -6,6 +6,10 @@ export default function () {
       content: {
         option1: `http://placehold.it/468x458`,
         option2: `http://placehold.it/468x458`,
+      },
+      right: {
+        question1: `paint`,
+        question2: `photo`,
       }
     },
     {
@@ -13,6 +17,9 @@ export default function () {
       description: `Угадай, фото или рисунок?`,
       content: {
         option1: `http://placehold.it/468x458`,
+      },
+      right: {
+        question1: `paint`,
       }
     },
     {
@@ -22,6 +29,9 @@ export default function () {
         option1: `http://placehold.it/468x458`,
         option2: `http://placehold.it/468x458`,
         option3: `http://placehold.it/468x458`,
+      },
+      right: {
+        question1: `http://placehold.it/468x458`
       }
     },
   ];

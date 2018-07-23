@@ -12,25 +12,8 @@ export default function showScreen(screen, header = true, footer = true) {
           item.remove();
           isHeader = false;
         }
-        if (screen.nodeType === 11 && screen.children[0].nodeName === `HEADER`) {
-          item.replaceWith(screen.cloneNode(true));
-          break;
-        }
         if (typeof header === `object`) {
           item.replaceWith(headerComponent(header));
-          // console.log(item);
-          // let timer = 30;
-          // setTimeout(function run() {
-          //   document.querySelector(`.game__timer`).innerHTML = timer--;
-          //   if (timer === 0) {
-          //     return null;
-          //   }
-          //   setTimeout(run, 1000);
-          //   return null;
-          // }, 1000);
-        // } else {
-        //   item.remove();
-        //   isHeader = false;
         }
         break;
       case `FOOTER`:
@@ -41,9 +24,6 @@ export default function showScreen(screen, header = true, footer = true) {
         }
         break;
       default:
-        if (screen.children[0].nodeName === `HEADER`) {
-          break;
-        }
         item.replaceWith(screen);
         break;
     }

@@ -4,9 +4,11 @@ import gameComponent from './components/game';
 // import greeting from './greeting';
 // import stats from './stats';
 
-export default function (data, headerGame) {
+export default function (data, statistic) {
   const dataGame = data.shift();
   let t = 0;
+  let fail = 0;
+  let iLevel = statistic.indexOf(`<li class="stats__result stats__result--unknown"></li>`);
   const game3 = stringToDom(`
   <div class="game">
     <p class="game__task">${dataGame.description}</p>
@@ -23,16 +25,7 @@ export default function (data, headerGame) {
     </form>
     <div class="stats">
       <ul class="stats">
-        <li class="stats__result stats__result--wrong"></li>
-        <li class="stats__result stats__result--slow"></li>
-        <li class="stats__result stats__result--fast"></li>
-        <li class="stats__result stats__result--correct"></li>
-        <li class="stats__result stats__result--wrong"></li>
-        <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--slow"></li>
-        <li class="stats__result stats__result--unknown"></li>
-        <li class="stats__result stats__result--fast"></li>
-        <li class="stats__result stats__result--unknown"></li>
+        ${statistic.join(``)}
       </ul>
     </div>
   </div>
@@ -41,16 +34,38 @@ export default function (data, headerGame) {
   [...game3.querySelectorAll(`.game__option`)].map((item) => {
     item.addEventListener(`click`, (event) => {
       clearInterval(t);
-      gameComponent(data, headerGame);
-      return event.target;
+      fail = event.target.querySelector(`img`).src === dataGame.right.question1 ? 0 : 1;
+      if (fail) {
+        statistic[iLevel] = `<li class="stats__result stats__result--wrong"></li>`;
+      } else {
+        let howLong = document.querySelector(`.game__timer`).innerHTML;
+        switch (true) {
+          case howLong > 20:
+            statistic[iLevel] = `<li class="stats__result stats__result--fast"></li>`;
+            break;
+          case howLong < 10:
+            statistic[iLevel] = `<li class="stats__result stats__result--slow"></li>`;
+            break;
+          default:
+            statistic[iLevel] = `<li class="stats__result stats__result--correct"></li>`;
+            break;
+        }
+      }
+      gameComponent(data, statistic, fail);
+      return null;
     });
   });
 
   game3.querySelector(`.game__option img`).addEventListener(`load`, (ev) => {
     t = setInterval(() => {
+      if (!document.querySelector(`.game__timer`)) {
+        clearInterval(t);
+        return null;
+      }
       if (document.querySelector(`.game__timer`).innerHTML < 1) {
         clearInterval(t);
-        gameComponent(data, headerGame);
+        statistic[iLevel] = `<li class="stats__result stats__result--wrong"></li>`;
+        gameComponent(data, statistic, ++fail);
         return null;
       }
       document.querySelector(`.game__timer`).innerHTML--;

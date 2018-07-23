@@ -1,7 +1,7 @@
 import stringToDom from '../stringToDom';
 // import showScreen from '../showScreen';
 // import game1 from './game1';
-import headerGame from './data/headerGame';
+// import headerGame from './data/headerGame';
 import dataGameFunc from './data/gameData';
 import gameComponent from './components/game';
 // import header from './components/header';
@@ -28,7 +28,7 @@ export default () => {
   `);
 
   rules.querySelector(`.continue`).addEventListener(`click`, () => {
-    gameComponent(dataGame, headerGame);
+    gameComponent(dataGame);
     // showScreen(game1(), headerGame);
   });
   rules.querySelector(`.rules__input`).addEventListener(`input`, (ev) => {

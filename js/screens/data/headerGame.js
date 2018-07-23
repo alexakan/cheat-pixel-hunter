@@ -1,4 +1,4 @@
-export default Object.freeze({
-  timer: 10,
+export default {
+  timer: 30,
   life: 3
-});
+};
