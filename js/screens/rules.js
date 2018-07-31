@@ -6,6 +6,7 @@ import dataGameFunc from './data/gameData';
 import gameComponent from './components/game';
 // import header from './components/header';
 
+
 export default () => {
   const dataGame = dataGameFunc();
   const rules = stringToDom(`
@@ -35,6 +36,10 @@ export default () => {
     if (ev.target.value !== ``) {
       document.querySelector(`.continue`).disabled = false;
     }
+  });
+
+  rules.querySelector(`.rules__description img`).addEventListener(`load`, () => {
+    document.querySelector(`.rules__input`).focus();
   });
 
   return rules;

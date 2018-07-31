@@ -1,4 +1,4 @@
 export default {
-  timer: 30,
+  timer: 300,
   life: 3
 };

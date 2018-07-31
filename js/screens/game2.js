@@ -14,7 +14,7 @@ export default function (data, statistic) {
     <p class="game__task">${dataGame.description}</p>
     <form class="game__content  game__content--wide">
       <div class="game__option">
-        <img src="${dataGame.content.option1}" alt="Option 1" width="705" height="455">
+        <img src="${dataGame.content.option1}" alt="Option 1" width="705" height="455" style="object-fit:cover">
         <label class="game__answer  game__answer--photo">
           <input name="question1" type="radio" value="photo">
           <span>Фото</span>

@@ -12,7 +12,7 @@ export default (data, statistic) => {
     <p class="game__task">${dataGame.description}</p>
     <form class="game__content">
       <div class="game__option">
-        <img src="${dataGame.content.option1}" alt="Option 1" width="468" height="458">
+        <img src="${dataGame.content.option1}" alt="Option 1" width="468" height="458" style="object-fit:cover">
         <label class="game__answer game__answer--photo">
           <input name="question1" type="radio" value="photo">
           <span>Фото</span>
@@ -23,7 +23,7 @@ export default (data, statistic) => {
         </label>
       </div>
       <div class="game__option">
-        <img src="${dataGame.content.option2}" alt="Option 2" width="468" height="458">
+        <img src="${dataGame.content.option2}" alt="Option 2" width="468" height="458" style="object-fit:cover">
         <label class="game__answer  game__answer--photo">
           <input name="question2" type="radio" value="photo">
           <span>Фото</span>

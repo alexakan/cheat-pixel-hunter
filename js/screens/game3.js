@@ -14,13 +14,13 @@ export default function (data, statistic) {
     <p class="game__task">${dataGame.description}</p>
     <form class="game__content  game__content--triple">
       <div class="game__option">
-        <img src="${dataGame.content.option1}" alt="Option 1" width="304" height="455">
+        <img src="${dataGame.content.option1}" alt="Option 1" width="304" height="455" style="object-fit:cover">
       </div>
       <div class="game__option">
-        <img src="${dataGame.content.option2}" alt="Option 2" width="304" height="455">
+        <img src="${dataGame.content.option2}" alt="Option 2" width="304" height="455" style="object-fit:cover">
       </div>
       <div class="game__option">
-        <img src="${dataGame.content.option3}" alt="Option 3" width="304" height="455">
+        <img src="${dataGame.content.option3}" alt="Option 3" width="304" height="455" style="object-fit:cover">
       </div>
     </form>
     <div class="stats">
